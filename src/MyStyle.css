@@ -58,5 +58,5 @@ body {
 }
 
 .bookCard.selected {
-  background-color: rgba(113, 155, 204, 0.3);
+  background-color: rgb(144, 188, 240);
 }
