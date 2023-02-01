@@ -5,6 +5,7 @@ import MyNav from "./components/MyNav";
 import MyFooter from "./components/MyFooter.jsx";
 import Welcome from "./components/Welcome.jsx";
 import BookList from "./components/BookList";
+import HistoryBooks from "./data/books/history.json";
 // import AllTheBooks from "./components/AllTheBooks.jsx";
 
 function App() {
@@ -17,15 +18,7 @@ function App() {
         Sagan"
       />
       {/* <AllTheBooks /> */}
-      <BookList
-        book={{
-          asin: "0735218994",
-          title: "Celtic Empire (Dirk Pitt Adventure)",
-          img: "https://images-na.ssl-images-amazon.com/images/I/91xI4GjM7jL.jpg",
-          price: 17.32,
-          category: "horror",
-        }}
-      />
+      <BookList books={HistoryBooks} />
       <MyFooter />
     </div>
   );

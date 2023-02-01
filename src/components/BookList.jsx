@@ -7,7 +7,7 @@ class BookList extends Component {
     return (
       <Container>
         <Row className="justify-content-center">
-          <Col
+          {/* <Col
             key={this.props.book.asin}
             xs={10}
             sm={6}
@@ -16,8 +16,8 @@ class BookList extends Component {
             className="mb-3"
           >
             <SingleBook book={this.props.book} />
-          </Col>
-          {/* {this.props.book.map(({ asin, title, img, price, category }) => {
+          </Col> */}
+          {this.props.books.map(({ asin, title, img, price, category }) => {
             return (
               <Col key={asin} xs={10} sm={6} md={4} lg={3} className="mb-3">
                 <SingleBook
@@ -28,7 +28,7 @@ class BookList extends Component {
                 />
               </Col>
             );
-          })} */}
+          })}
         </Row>
       </Container>
     );
