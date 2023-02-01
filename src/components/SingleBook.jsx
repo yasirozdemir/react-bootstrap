@@ -2,9 +2,26 @@ import { Component } from "react";
 import { Card } from "react-bootstrap";
 
 class SingleBook extends Component {
+  state = {
+    selected: false,
+  };
+
   render() {
     return (
-      <Card className="bookCard">
+      <Card
+        onClick={() => {
+          if (this.state.selected) {
+            this.setState({
+              selected: false,
+            });
+          } else {
+            this.setState({
+              selected: true,
+            });
+          }
+        }}
+        className="bookCard"
+      >
         <Card.Img variant="top" src={this.props.img} />
         <Card.Body>
           <Card.Title>{this.props.title}</Card.Title>
