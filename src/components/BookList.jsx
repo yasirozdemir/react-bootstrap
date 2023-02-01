@@ -10,19 +10,17 @@ class BookList extends Component {
   render() {
     return (
       <Container>
-        <Nav>
-          <InputGroup className="col-12 col-lg-6 mx-auto mb-4">
-            <Form.Control
-              className="border-dark"
-              placeholder="Search Books"
-              onChange={(event) => {
-                this.setState({
-                  searchQuery: event.target.value,
-                });
-              }}
-            />
-          </InputGroup>
-        </Nav>
+        <InputGroup className="col-12 col-lg-6 mx-auto mb-4">
+          <Form.Control
+            placeholder="Search Books"
+            onChange={(event) => {
+              this.setState({
+                searchQuery: event.target.value,
+              });
+            }}
+          />
+        </InputGroup>
+
         <Row className="justify-content-center">
           {this.props.books.map((book) => {
             return (
