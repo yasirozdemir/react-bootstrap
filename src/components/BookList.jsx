@@ -26,14 +26,16 @@ class BookList extends Component {
         <Row className="justify-content-center">
           {this.props.books.map(({ asin, title, img, price, category }) => {
             return (
-              <Col key={asin} xs={10} sm={6} md={4} lg={3} className="mb-3">
-                <SingleBook
-                  title={title}
-                  img={img}
-                  price={price}
-                  category={category}
-                />
-              </Col>
+              title.toLowerCase().includes(this.state.searchQuery) && (
+                <Col key={asin} xs={10} sm={6} md={4} lg={3} className="mb-3">
+                  <SingleBook
+                    title={title}
+                    img={img}
+                    price={price}
+                    category={category}
+                  />
+                </Col>
+              )
             );
           })}
         </Row>
