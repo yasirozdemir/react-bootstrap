@@ -20,7 +20,7 @@ class SingleBook extends Component {
             });
           }
         }}
-        className="bookCard"
+        className={this.state.selected ? "selected bookCard" : "bookCard"}
       >
         <Card.Img variant="top" src={this.props.img} />
         <Card.Body>
