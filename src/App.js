@@ -6,6 +6,9 @@ import MyFooter from "./components/MyFooter.jsx";
 import Welcome from "./components/Welcome.jsx";
 import BookList from "./components/BookList";
 import HistoryBooks from "./data/books/history.json";
+// import HorrorBooks from "./data/books/horror.json";
+// import RomanceBooks from "./data/books/romance.json";
+// import ScifiBooks from "./data/books/scifi.json";
 // import AllTheBooks from "./components/AllTheBooks.jsx";
 
 function App() {
