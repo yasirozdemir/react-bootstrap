@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 
 class SingleBook extends Component {
   state = {
@@ -8,30 +8,34 @@ class SingleBook extends Component {
 
   render() {
     return (
-      <Card
-        onClick={() => {
-          if (this.state.selected) {
-            this.setState({
-              selected: false,
-            });
-          } else {
-            this.setState({
-              selected: true,
-            });
-          }
-        }}
-        className={this.state.selected ? "selected bookCard" : "bookCard"}
-      >
-        <Card.Img variant="top" src={this.props.img} />
-        <Card.Body>
-          <Card.Title>{this.props.title}</Card.Title>
-          <Card.Text className="text-primary">${this.props.price}</Card.Text>
-          <small>
-            {this.props.category.charAt(0).toUpperCase() +
-              this.props.category.slice(1)}
-          </small>
-        </Card.Body>
-      </Card>
+      <Col xs={10} sm={6} md={4} lg={3} className="mb-3">
+        <Card
+          onClick={() => {
+            if (this.state.selected) {
+              this.setState({
+                selected: false,
+              });
+            } else {
+              this.setState({
+                selected: true,
+              });
+            }
+          }}
+          className={this.state.selected ? "selected bookCard" : "bookCard"}
+        >
+          <Card.Img variant="top" src={this.props.book.img} />
+          <Card.Body>
+            <Card.Title>{this.props.book.title}</Card.Title>
+            <Card.Text className="text-primary">
+              ${this.props.book.price}
+            </Card.Text>
+            <small>
+              {this.props.book.category.charAt(0).toUpperCase() +
+                this.props.book.category.slice(1)}
+            </small>
+          </Card.Body>
+        </Card>
+      </Col>
     );
   }
 }

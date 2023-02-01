@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Container, Row, Col, Nav, InputGroup, Form } from "react-bootstrap";
+import { Container, Row, Nav, InputGroup, Form } from "react-bootstrap";
 import SingleBook from "./SingleBook";
 
 class BookList extends Component {
@@ -24,17 +24,10 @@ class BookList extends Component {
           </InputGroup>
         </Nav>
         <Row className="justify-content-center">
-          {this.props.books.map(({ asin, title, img, price, category }) => {
+          {this.props.books.map((book) => {
             return (
-              title.toLowerCase().includes(this.state.searchQuery) && (
-                <Col key={asin} xs={10} sm={6} md={4} lg={3} className="mb-3">
-                  <SingleBook
-                    title={title}
-                    img={img}
-                    price={price}
-                    category={category}
-                  />
-                </Col>
+              book.title.toLowerCase().includes(this.state.searchQuery) && (
+                <SingleBook key={book.asin} book={book} />
               )
             );
           })}
