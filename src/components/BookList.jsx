@@ -11,7 +11,7 @@ class BookList extends Component {
     return (
       <Container>
         <Nav>
-          <InputGroup className="w-50 mx-auto mb-4">
+          <InputGroup className="col-12 col-lg-6 mx-auto mb-4">
             <Form.Control
               className="border-dark"
               placeholder="Search Books"
