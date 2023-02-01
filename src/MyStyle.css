@@ -1,9 +1,16 @@
+body {
+  background-image: url(https://images.pexels.com/photos/139306/pexels-photo-139306.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: contain;
+  backdrop-filter: blur(2px);
+}
+
 .jumbotron {
   background-image: url(https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   position: relative;
+  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.333);
 }
 
 .jumbotron h1,
