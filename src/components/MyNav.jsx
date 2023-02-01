@@ -1,4 +1,4 @@
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, InputGroup, Form, Button } from "react-bootstrap";
 
 const MyNav = () => {
   return (
@@ -10,6 +10,14 @@ const MyNav = () => {
           <Nav.Link href="#">Home</Nav.Link>
           <Nav.Link href="#">About</Nav.Link>
           <Nav.Link href="#">Browse</Nav.Link>
+        </Nav>
+        <Nav>
+          <InputGroup>
+            <Form.Control />
+            <Button variant="outline-secondary" id="button-addon2">
+              Search
+            </Button>
+          </InputGroup>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
