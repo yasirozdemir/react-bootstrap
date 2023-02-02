@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { FormGroup, Form, Button } from "react-bootstrap";
+import { FormGroup, Form, Button, Alert } from "react-bootstrap";
 
 class AddingCommentSection extends Component {
   state = {
@@ -9,6 +9,8 @@ class AddingCommentSection extends Component {
       rate: 0,
       elementId: this.props.bookAsin,
     },
+    isError: false,
+    isUploaded: false,
   };
 
   postComment = async () => {
@@ -27,6 +29,7 @@ class AddingCommentSection extends Component {
       if (response.ok) {
         this.setState({
           ...this.state,
+          isUploaded: true,
           newComment: {
             ...this.state.newComment,
             comment: "",
@@ -34,10 +37,16 @@ class AddingCommentSection extends Component {
           },
         });
       } else {
-        console.log("error");
+        this.setState({
+          ...this.state,
+          isError: true,
+        });
       }
     } catch (error) {
-      console.error(error.message);
+      this.setState({
+        ...this.state,
+        isError: true,
+      });
     }
   };
 
@@ -45,6 +54,14 @@ class AddingCommentSection extends Component {
     return (
       <>
         <h6>Add comment</h6>
+        {this.state.isError && (
+          <Alert variant="danger">
+            The comment couldn't saved. Please try again!
+          </Alert>
+        )}
+        {this.state.isUploaded && (
+          <Alert variant="success">Thanks for the comment!</Alert>
+        )}
         <Form
           onSubmit={(event) => {
             event.preventDefault();
@@ -88,13 +105,7 @@ class AddingCommentSection extends Component {
               }}
             />
           </FormGroup>
-          <Button
-            type="submit"
-            variant="dark"
-            onClick={() => {
-              this.postComment();
-            }}
-          >
+          <Button type="submit" variant="dark">
             Send
           </Button>
         </Form>

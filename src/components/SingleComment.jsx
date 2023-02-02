@@ -1,15 +1,17 @@
 import { Component } from "react";
-import { ListGroup, Button } from "react-bootstrap";
+import { ListGroup, Button, Alert } from "react-bootstrap";
 
 class SingleComment extends Component {
   state = {
+    isDeleted: false,
+    isError: false,
     url: "https://striveschool-api.herokuapp.com/api/comments/",
     commentId: this.props.commentObj._id,
   };
 
   deleteComment = async () => {
     try {
-      fetch(this.state.url + this.state.commentId, {
+      const response = await fetch(this.state.url + this.state.commentId, {
         method: "DELETE",
         headers: {
           Authorization:
@@ -17,25 +19,47 @@ class SingleComment extends Component {
           "Content-Type": "application/json",
         },
       });
+      if (response.ok) {
+        this.setState({
+          ...this.state,
+          isDeleted: true,
+        });
+      } else {
+        this.setState({
+          ...this.state,
+          isError: true,
+        });
+      }
     } catch (error) {
-      console.error(error);
+      this.setState({
+        ...this.state,
+        isError: true,
+      });
     }
   };
 
   render() {
     return (
-      <ListGroup.Item className="mb-1">
-        <div className="mb-1 d-flex align-items-center">
-          ({this.props.commentObj.rate}) {this.props.commentObj.comment}
-          <Button
-            className="ml-auto"
-            variant="danger"
-            onClick={this.deleteComment}
-          >
-            X
-          </Button>
-        </div>
-      </ListGroup.Item>
+      <>
+        {this.state.isError && (
+          <Alert variant="danger">Comment couldn't deleted!</Alert>
+        )}
+        {this.state.isDeleted && (
+          <Alert variant="success">Comment succesfully deleted!</Alert>
+        )}
+        <ListGroup.Item className="mb-1">
+          <div className="mb-1 d-flex align-items-center">
+            ({this.props.commentObj.rate}) {this.props.commentObj.comment}
+            <Button
+              className="ml-auto"
+              variant="danger"
+              onClick={this.deleteComment}
+            >
+              X
+            </Button>
+          </div>
+        </ListGroup.Item>
+      </>
     );
   }
 }

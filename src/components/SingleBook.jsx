@@ -27,13 +27,12 @@ class SingleBook extends Component {
           <Card.Img variant="top" src={this.props.book.img} />
           <Card.Body>
             <Card.Title>{this.props.book.title}</Card.Title>
-            <Card.Text className="text-primary">
-              ${this.props.book.price}
-            </Card.Text>
-            <small>
+            <Card.Text>
+              <span className="text-primary">${this.props.book.price}</span>
+              {" | "}
               {this.props.book.category.charAt(0).toUpperCase() +
                 this.props.book.category.slice(1)}
-            </small>
+            </Card.Text>
           </Card.Body>
         </Card>
         {this.state.selected && (
