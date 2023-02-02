@@ -1,5 +1,13 @@
 import { Component } from "react";
-import { Container, Row, InputGroup, Form, Button, Col } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  InputGroup,
+  Form,
+  Button,
+  Col,
+  Alert,
+} from "react-bootstrap";
 import SingleBook from "./SingleBook";
 import HistoryBooks from "../data/books/history.json";
 import HorrorBooks from "../data/books/horror.json";
@@ -9,7 +17,7 @@ import ScifiBooks from "../data/books/scifi.json";
 
 class BookList extends Component {
   state = {
-    booksArray: HistoryBooks,
+    booksArray: "",
     searchQuery: "",
   };
 
@@ -93,15 +101,23 @@ class BookList extends Component {
           </Row>
         </Col>
 
-        <Row className="justify-content-center">
-          {this.state.booksArray.map((book) => {
-            return (
-              book.title.toLowerCase().includes(this.state.searchQuery) && (
-                <SingleBook key={book.asin} book={book} />
-              )
-            );
-          })}
-        </Row>
+        {this.state.booksArray === "" && (
+          <Alert variant="light" className="text-dark">
+            Welcome to EpiBooks, please select a genre to see the books 🙂
+          </Alert>
+        )}
+
+        {this.state.booksArray !== "" && (
+          <Row className="justify-content-center">
+            {this.state.booksArray.map((book) => {
+              return (
+                book.title.toLowerCase().includes(this.state.searchQuery) && (
+                  <SingleBook key={book.asin} book={book} />
+                )
+              );
+            })}
+          </Row>
+        )}
       </Container>
     );
   }
