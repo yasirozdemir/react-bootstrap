@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { ListGroup } from "react-bootstrap";
+import { ListGroup, Spinner, Alert } from "react-bootstrap";
 import SingleComment from "./SingleComment";
 
 class CommentsList extends Component {
@@ -53,6 +53,11 @@ class CommentsList extends Component {
     return (
       <>
         <h6>Comments List</h6>
+        {this.state.isLoading && <Spinner animation="border" variant="dark" />}
+        {this.state.isError && (
+          <Alert variant="danger">Somethwing went wrong while loading!</Alert>
+        )}
+
         <ListGroup>
           {this.state.comments.map((commentObj) => {
             return (
