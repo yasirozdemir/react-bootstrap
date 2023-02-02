@@ -12,7 +12,7 @@ class BookList extends Component {
       <Container>
         <InputGroup className="col-12 col-lg-6 mx-auto mb-4">
           <Form.Control
-            placeholder="Search Books"
+            placeholder="Search Books..."
             onChange={(event) => {
               this.setState({
                 searchQuery: event.target.value,
