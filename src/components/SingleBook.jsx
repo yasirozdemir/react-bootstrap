@@ -29,9 +29,11 @@ class SingleBook extends Component {
             <Card.Title>{this.props.book.title}</Card.Title>
             <Card.Text>
               <span className="text-primary">${this.props.book.price}</span>
-              {" | "}
-              {this.props.book.category.charAt(0).toUpperCase() +
-                this.props.book.category.slice(1)}
+              <span className="d-none d-md-inline">
+                {" | "}
+                {this.props.book.category.charAt(0).toUpperCase() +
+                  this.props.book.category.slice(1)}
+              </span>
             </Card.Text>
           </Card.Body>
         </Card>

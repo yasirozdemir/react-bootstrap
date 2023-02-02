@@ -73,3 +73,7 @@ body {
   right: 15px;
   left: 15px;
 }
+
+.genreBtn {
+  min-width: 100px;
+}
