@@ -24,15 +24,17 @@ class SingleComment extends Component {
 
   render() {
     return (
-      <ListGroup.Item>
-        Rate: {this.props.commentObj.rate}
-        <br />
-        Com: {this.props.commentObj.comment}
-        <br />
-        ComId: {this.props.commentObj._id}
-        <Button variant="danger" onClick={this.deleteComment}>
-          Delete
-        </Button>
+      <ListGroup.Item className="mb-1">
+        <div className="mb-1 d-flex align-items-center">
+          ({this.props.commentObj.rate}) {this.props.commentObj.comment}
+          <Button
+            className="ml-auto"
+            variant="danger"
+            onClick={this.deleteComment}
+          >
+            X
+          </Button>
+        </div>
       </ListGroup.Item>
     );
   }

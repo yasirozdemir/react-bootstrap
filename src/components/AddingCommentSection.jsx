@@ -70,6 +70,7 @@ class AddingCommentSection extends Component {
           <FormGroup>
             <label htmlFor="rateInput">Rate</label>
             <input
+              className="ml-2 w-50"
               type="number"
               id="rateInput"
               required
@@ -87,16 +88,16 @@ class AddingCommentSection extends Component {
               }}
             />
           </FormGroup>
+          <Button
+            type="submit"
+            variant="dark"
+            onClick={() => {
+              this.postComment();
+            }}
+          >
+            Send
+          </Button>
         </Form>
-        <Button
-          type="submit"
-          variant="outline-dark"
-          onClick={() => {
-            this.postComment();
-          }}
-        >
-          Send
-        </Button>
       </>
     );
   }
